@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="https://www.woltlab.com" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.woltlab.com https://www.woltlab.com/XSD/tornado/language.xsd" languagecode="en" languagename="English" countrycode="gb">
+	<category name="wcf.acp.menu">
+		<item name="wcf.acp.menu.link.group.removal"><![CDATA[Automatische Entfernungen]]></item>
+		<item name="wcf.acp.menu.link.group.removal.add"><![CDATA[Automatische Entfernung hinzufügen]]></item>
+	</category>
+
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.removal.add"><![CDATA[Automatische Benutzergruppen-Entfernung hinzufügen]]></item>
+		<item name="wcf.acp.group.removal.button.add"><![CDATA[Automatische Entfernung hinzufügen]]></item>
+		<item name="wcf.acp.group.removal.button.list"><![CDATA[Automatische Entfernungen auflisten]]></item>
+		<item name="wcf.acp.group.removal.conditions"><![CDATA[Bedingungen]]></item>
+		<item name="wcf.acp.group.removal.conditions.description"><![CDATA[Benutzer müssen die folgenden Bedingungen erfüllen, um automatisch aus der Benutzergruppe entfernt zu werden.]]></item>
+		<item name="wcf.acp.group.removal.delete.confirmMessage"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} die automatische Benutzergruppen-Entfernung <span class="confirmationObject">{$removal->title}</span> wirklich löschen?]]></item>
+		<item name="wcf.acp.group.removal.edit"><![CDATA[Automatische Benutzergruppen-Entfernung bearbeiten]]></item>
+		<item name="wcf.acp.group.removal.error.noConditions"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Du hast{else}Sie haben{/if} keine Bedingungen ausgewählt.]]></item>
+		<item name="wcf.acp.group.removal.isDisabled"><![CDATA[Automatische Entfernung deaktivieren]]></item>
+		<item name="wcf.acp.group.removal.list"><![CDATA[Automatische Benutzergruppen-Entfernungen]]></item>
+		<item name="wcf.acp.group.removal.title.error.tooLong"><![CDATA[Der eingegebene Titel ist zu lang. Die maximale Länge beträgt 255 Zeichen.]]></item>
+		<item name="wcf.acp.group.removal.userGroup"><![CDATA[Benutzergruppe]]></item>
+	</category>
+</language>

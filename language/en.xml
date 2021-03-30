@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="https://www.woltlab.com" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.woltlab.com https://www.woltlab.com/XSD/tornado/language.xsd" languagecode="en" languagename="English" countrycode="gb">
+	<category name="wcf.acp.menu">
+		<item name="wcf.acp.menu.link.group.removal"><![CDATA[Automatic Removals]]></item>
+		<item name="wcf.acp.menu.link.group.removal.add"><![CDATA[Add Automatic Removal]]></item>
+	</category>
+
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.removal.add"><![CDATA[Add Automatic User Group Removal]]></item>
+		<item name="wcf.acp.group.removal.button.add"><![CDATA[Add Automatic Removal]]></item>
+		<item name="wcf.acp.group.removal.button.list"><![CDATA[Automatic Removals]]></item>
+		<item name="wcf.acp.group.removal.conditions"><![CDATA[Conditions]]></item>
+		<item name="wcf.acp.group.removal.conditions.description"><![CDATA[The users need to fulfill the following conditions to automatically be removed from the user group.]]></item>
+		<item name="wcf.acp.group.removal.delete.confirmMessage"><![CDATA[Do you really want to delete the automatic user group removal <span class="confirmationObject">{$removal->title}</span>?]]></item>
+		<item name="wcf.acp.group.removal.edit"><![CDATA[Edit Automatic User Group Removal]]></item>
+		<item name="wcf.acp.group.removal.error.noConditions"><![CDATA[You have not provided any conditions yet.]]></item>
+		<item name="wcf.acp.group.removal.isDisabled"><![CDATA[Disable Automatic Removal]]></item>
+		<item name="wcf.acp.group.removal.list"><![CDATA[Automatic User Group Removals]]></item>
+		<item name="wcf.acp.group.removal.title.error.tooLong"><![CDATA[The entered title is too long. The maximum length is 255 characters.]]></item>
+		<item name="wcf.acp.group.removal.userGroup"><![CDATA[User Group]]></item>
+	</category>
+</language>
