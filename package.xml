@@ -35,5 +35,6 @@
 
 	<instructions type="update" fromversion="1.0.0">
 		<instruction type="objectType" />
+		<instruction type="cronjob" />
 	</instructions>
 </package>

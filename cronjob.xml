@@ -5,12 +5,11 @@
 			<classname>wcf\system\cronjob\UserGroupRemovalCronjob</classname>
 			<description>Removes users automatically from user groups</description>
 			<description language="de">Entfernt Benutzer automatisch aus Benutzergruppen</description>
-			<startminute>*/15</startminute>
+			<startminute>*/10</startminute>
 			<starthour>*</starthour>
 			<startdom>*</startdom>
 			<startmonth>*</startmonth>
 			<startdow>*</startdow>
-			<active>1</active>
 			<canbeedited>1</canbeedited>
 			<canbedisabled>1</canbedisabled>
 		</cronjob>
