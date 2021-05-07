@@ -7,7 +7,17 @@ use wcf\system\condition\ConditionHandler;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\WCF;
 
-class UserGroupRemovalEditForm extends UserGroupRemovalAddForm {
+/**
+ * Shows the form to edit an existing automatic user group removal.
+ *
+ * @author Moritz Dahlke (DMedia)
+ * @author Original Author: Matthias Schmidt
+ * @copyright 2020-2021 DMedia
+ * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @package WoltLabSuite\Core\Acp\Form
+ */
+class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
+{
 	/**
 	 * @var	UserGroupRemoval
 	 */

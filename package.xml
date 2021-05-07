@@ -37,5 +37,6 @@
 		<instruction type="objectType" />
 		<instruction type="cronjob" />
 		<instruction type="acpTemplate" />
+		<instruction type="file" />
 	</instructions>
 </package>

@@ -4,7 +4,21 @@ use wcf\data\AbstractDatabaseObjectAction;
 use wcf\data\IToggleAction;
 use wcf\system\condition\ConditionHandler;
 
-class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements IToggleAction {
+/**
+ * Executes user group removal-related actions.
+ *
+ * @author Moritz Dahlke (DMedia)
+ * @author Original Author: Matthias Schmidt
+ * @copyright 2020-2021 DMedia
+ * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @package WoltLabSuite\Core\Data\User\Group\Removal
+ *
+ * @method  UserGroupRemoval     create()
+ * @method  UserGroupRemovalEditor[] getObjects()
+ * @method  UserGroupRemovalEditor   getSingleObject()
+ */
+class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements IToggleAction
+{
 	/**
 	 * @inheritDoc
 	 */

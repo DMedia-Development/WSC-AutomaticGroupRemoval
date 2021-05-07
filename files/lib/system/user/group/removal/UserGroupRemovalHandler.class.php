@@ -9,7 +9,17 @@ use wcf\data\user\UserList;
 use wcf\system\cache\builder\UserGroupRemovalCacheBuilder;
 use wcf\system\SingletonFactory;
 
-class UserGroupRemovalHandler extends SingletonFactory {
+/**
+ * Handles user group removal-related matters.
+ *
+ * @author Moritz Dahlke (DMedia)
+ * @author Original Author: Matthias Schmidt
+ * @copyright 2020-2021 DMedia
+ * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @package WoltLabSuite\Core\System\User\Group\Removal
+ */
+class UserGroupRemovalHandler extends SingletonFactory
+{
 	/**
 	 * @var	ObjectType[][]
 	 */

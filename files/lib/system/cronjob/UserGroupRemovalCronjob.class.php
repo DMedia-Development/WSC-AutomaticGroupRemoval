@@ -5,7 +5,17 @@ use wcf\data\user\UserAction;
 use wcf\system\cache\builder\UserGroupRemovalCacheBuilder;
 use wcf\system\user\group\removal\UserGroupRemovalHandler;
 
-class UserGroupRemovalCronjob extends AbstractCronjob {
+/**
+ * Executes automatic user group removals.
+ *
+ * @author Moritz Dahlke (DMedia)
+ * @author Original Author: Matthias Schmidt
+ * @copyright 2020-2021 DMedia
+ * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @package WoltLabSuite\Core\System\Cronjob
+ */
+class UserGroupRemovalCronjob extends AbstractCronjob
+{
 	const MAXIMUM_REMOVALS = 1000;
 	
 	/**

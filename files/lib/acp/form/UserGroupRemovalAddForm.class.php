@@ -10,7 +10,17 @@ use wcf\system\user\group\removal\UserGroupRemovalHandler;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 
-class UserGroupRemovalAddForm extends AbstractForm {
+/**
+ * Shows the form to create a new automatic user group removal.
+ *
+ * @author Moritz Dahlke (DMedia)
+ * @author Original Author: Matthias Schmidt
+ * @copyright 2020-2021 DMedia
+ * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
+ * @package WoltLabSuite\Core\Acp\Form
+ */
+class UserGroupRemovalAddForm extends AbstractForm
+{
 	/**
 	 * @inheritDoc
 	 */
