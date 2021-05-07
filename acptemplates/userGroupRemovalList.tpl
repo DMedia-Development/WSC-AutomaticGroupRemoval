@@ -4,18 +4,6 @@
 	$(function() {
 		new WCF.Action.Delete('wcf\\data\\user\\group\\removal\\UserGroupRemovalAction', '.jsUserGroupRemovalRow');
 		new WCF.Action.Toggle('wcf\\data\\user\\group\\removal\\UserGroupRemovalAction', '.jsUserGroupRemovalRow');
-		
-		var options = { };
-		{if $pages > 1}
-			options.refreshPage = true;
-			{if $pages == $pageNo}
-				options.updatePageNumber = -1;
-			{/if}
-		{else}
-			options.emptyMessage = '{lang}wcf.global.noItems{/lang}';
-		{/if}
-		
-		new WCF.Table.EmptyTableHandler($('#UserGroupRemovalTableContainer'), 'jsUserGroupRemovalRow', options);
 	});
 </script>
 
@@ -52,7 +40,7 @@
 				</tr>
 			</thead>
 			
-			<tbody>
+			<tbody class="jsReloadPageWhenEmpty">
 				{foreach from=$objects item='removal'}
 					<tr class="jsUserGroupRemovalRow">
 						<td class="columnIcon">
