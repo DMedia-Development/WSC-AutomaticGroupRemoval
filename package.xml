@@ -5,8 +5,8 @@
         <packagedescription><![CDATA[Removes users automatically from groups according to specific criteria.]]></packagedescription>
 		<packagename language="de"><![CDATA[Automatische Benutzergruppen Entfernung]]></packagename>
         <packagedescription language="de"><![CDATA[Entfernt Benutzer nach bestimmten Kriterien automatisch aus Gruppen.]]></packagedescription>	
-		<version>1.0.0</version>
-		<date>2020-01-25</date>
+		<version>1.1.0</version>
+		<date>2020-05-07</date>
 	</packageinformation>
 	
 	<authorinformation>
@@ -31,5 +31,9 @@
 		<instruction type="file" />
 		<instruction type="sql" />
 		<instruction type="cronjob" />
+	</instructions>
+
+	<instructions type="update" fromversion="1.0.0">
+		<instruction type="objectType" />
 	</instructions>
 </package>

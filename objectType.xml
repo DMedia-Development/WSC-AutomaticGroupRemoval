@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/objectType.xsd">
-	<import>	
+	<import>
+		<!-- user group removal conditions -->
 		<type>
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.username</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
@@ -8,15 +9,15 @@
 			<conditiongroup>general</conditiongroup>
 		</type>
 		<type>
-			<name>dev.dmedia.AutomaticGroupRemoval.condition.email</name>
-			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
-			<classname>wcf\system\condition\UserEmailCondition</classname>
-			<conditiongroup>general</conditiongroup>
-		</type>
-		<type>
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.userGroup</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
 			<classname>wcf\system\condition\UserGroupCondition</classname>
+			<conditiongroup>general</conditiongroup>
+		</type>
+		<type>
+			<name>dev.dmedia.AutomaticGroupRemoval.condition.email</name>
+			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+			<classname>wcf\system\condition\UserEmailCondition</classname>
 			<conditiongroup>general</conditiongroup>
 		</type>
 		<type>
@@ -41,6 +42,18 @@
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.avatar</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
 			<classname>wcf\system\condition\UserAvatarCondition</classname>
+			<conditiongroup>general</conditiongroup>
+		</type>
+		<type>
+			<name>dev.dmedia.AutomaticGroupRemoval.condition.signature</name>
+			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+			<classname>wcf\system\condition\UserSignatureCondition</classname>
+			<conditiongroup>general</conditiongroup>
+		</type>
+		<type>
+			<name>dev.dmedia.AutomaticGroupRemoval.condition.coverPhoto</name>
+			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+			<classname>wcf\system\condition\UserCoverPhotoCondition</classname>
 			<conditiongroup>general</conditiongroup>
 		</type>
 		<type>
