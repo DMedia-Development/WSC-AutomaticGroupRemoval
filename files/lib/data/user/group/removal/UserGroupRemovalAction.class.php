@@ -1,7 +1,10 @@
 <?php
+
 namespace wcf\data\user\group\removal;
+
 use wcf\data\AbstractDatabaseObjectAction;
 use wcf\data\IToggleAction;
+use wcf\data\TDatabaseObjectToggle;
 use wcf\system\condition\ConditionHandler;
 
 /**
@@ -19,6 +22,8 @@ use wcf\system\condition\ConditionHandler;
  */
 class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements IToggleAction
 {
+	use TDatabaseObjectToggle;
+
 	/**
 	 * @inheritDoc
 	 */
@@ -37,27 +42,13 @@ class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements ITo
 	/**
 	 * @inheritDoc
 	 */
-	public function delete() {
-		ConditionHandler::getInstance()->deleteConditions('dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval', $this->objectIDs);
-		
+	public function delete()
+	{
+		ConditionHandler::getInstance()->deleteConditions(
+			'dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval',
+			$this->objectIDs
+		);
+
 		return parent::delete();
-	}
-	
-	/**
-	 * @inheritDoc
-	 */
-	public function toggle() {
-		foreach ($this->getObjects() as $removal) {
-			$removal->update([
-				'isDisabled' => $removal->isDisabled ? 0 : 1
-			]);
-		}
-	}
-	
-	/**
-	 * @inheritDoc
-	 */
-	public function validateToggle() {
-		parent::validateUpdate();
 	}
 }

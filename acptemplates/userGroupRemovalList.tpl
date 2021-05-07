@@ -1,12 +1,5 @@
 {include file='header' pageTitle='wcf.acp.group.removal.list'}
 
-<script data-relocate="true">
-	$(function() {
-		new WCF.Action.Delete('wcf\\data\\user\\group\\removal\\UserGroupRemovalAction', '.jsUserGroupRemovalRow');
-		new WCF.Action.Toggle('wcf\\data\\user\\group\\removal\\UserGroupRemovalAction', '.jsUserGroupRemovalRow');
-	});
-</script>
-
 <header class="contentHeader">
 	<div class="contentHeaderTitle">
 		<h1 class="contentTitle">{lang}wcf.acp.group.removal.list{/lang}{if $items} <span class="badge badgeInverse">{#$items}</span>{/if}</h1>
@@ -29,7 +22,7 @@
 
 {if $objects|count}
 	<div class="section tabularBox" id="UserGroupRemovalTableContainer">
-		<table class="table">
+		<table class="table jsObjectActionContainer" data-object-action-class-name="wcf\data\user\group\removal\\UserGroupRemovalAction">
 			<thead>
 				<tr>
 					<th class="columnID columnRemovalID" colspan="2"><span>{lang}wcf.global.objectID{/lang}</span></th>
@@ -42,11 +35,11 @@
 			
 			<tbody class="jsReloadPageWhenEmpty">
 				{foreach from=$objects item='removal'}
-					<tr class="jsUserGroupRemovalRow">
+					<tr class="jsUserGroupRemovalRow jsObjectActionObject" data-object-id="{@$removal->getObjectID()}">
 						<td class="columnIcon">
-							<span class="icon icon16 fa-{if !$removal->isDisabled}check-{/if}square-o jsToggleButton jsTooltip pointer" title="{lang}wcf.global.button.{if $removal->isDisabled}enable{else}disable{/if}{/lang}" data-object-id="{@$removal->removalID}"></span>
+							{objectAction action="toggle" isDisabled=$removal->isDisabled}
 							<a href="{link controller='UserGroupRemovalEdit' object=$removal}{/link}" title="{lang}wcf.global.button.edit{/lang}" class="jsTooltip"><span class="icon icon16 fa-pencil"></span></a>
-							<span class="icon icon16 fa-times jsDeleteButton jsTooltip pointer" title="{lang}wcf.global.button.delete{/lang}" data-object-id="{@$removal->removalID}" data-confirm-message-html="{lang __encode=true}wcf.acp.group.removal.delete.confirmMessage{/lang}"></span>
+							{objectAction action="delete" objectTitle=$removal->getTitle()}
 							
 							{event name='rowButtons'}
 						</td>

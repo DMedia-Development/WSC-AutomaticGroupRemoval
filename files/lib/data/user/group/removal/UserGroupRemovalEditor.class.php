@@ -1,8 +1,10 @@
 <?php
+
 namespace wcf\data\user\group\removal;
-use wcf\data\object\type\ObjectTypeCache;
+
 use wcf\data\DatabaseObjectEditor;
 use wcf\data\IEditableCachedObject;
+use wcf\data\object\type\ObjectTypeCache;
 use wcf\system\cache\builder\ConditionCacheBuilder;
 use wcf\system\cache\builder\UserGroupRemovalCacheBuilder;
 
@@ -29,10 +31,11 @@ class UserGroupRemovalEditor extends DatabaseObjectEditor implements IEditableCa
 	/**
 	 * @inheritDoc
 	 */
-	public static function resetCache() {
+	public static function resetCache()
+	{
 		UserGroupRemovalCacheBuilder::getInstance()->reset();
 		ConditionCacheBuilder::getInstance()->reset([
-			'definitionID' => ObjectTypeCache::getInstance()->getDefinitionByName('dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval')->definitionID
+			'definitionID' => ObjectTypeCache::getInstance()->getDefinitionByName('dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval')->definitionID,
 		]);
 	}
 }

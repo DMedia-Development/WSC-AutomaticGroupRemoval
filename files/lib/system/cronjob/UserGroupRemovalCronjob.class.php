@@ -1,5 +1,7 @@
 <?php
+
 namespace wcf\system\cronjob;
+
 use wcf\data\cronjob\Cronjob;
 use wcf\data\user\UserAction;
 use wcf\system\cache\builder\UserGroupRemovalCacheBuilder;
@@ -21,7 +23,8 @@ class UserGroupRemovalCronjob extends AbstractCronjob
 	/**
 	 * @inheritDoc
 	 */
-	public function execute(Cronjob $cronjob) {
+	public function execute(Cronjob $cronjob)
+	{
 		parent::execute($cronjob);
 		
 		$removals = UserGroupRemovalCacheBuilder::getInstance()->getData();
@@ -34,9 +37,9 @@ class UserGroupRemovalCronjob extends AbstractCronjob
 			}
 			
 			$newUsers = UserGroupRemovalHandler::getInstance()->getUsers($removal, self::MAXIMUM_REMOVALS);
-			$usersFromGroup[$removal->groupID] = array_merge($usersFromGroup[$removal->groupID], $newUsers);
+			$usersFromGroup[$removal->groupID] = \array_merge($usersFromGroup[$removal->groupID], $newUsers);
 			
-			$removalCount += count($newUsers);
+			$removalCount += \count($newUsers);
 			if ($removalCount > self::MAXIMUM_REMOVALS) {
 				break;
 			}
@@ -44,7 +47,7 @@ class UserGroupRemovalCronjob extends AbstractCronjob
 		
 		foreach ($usersFromGroup as $groupID => $users) {
 			if (!empty($users)) {
-				$userAction = new UserAction(array_unique($users), 'removeFromGroups', [
+				$userAction = new UserAction(\array_unique($users), 'removeFromGroups', [
 					'groups' => [$groupID]
 				]);
 				$userAction->executeAction();
