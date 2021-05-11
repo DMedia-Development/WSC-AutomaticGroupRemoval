@@ -17,9 +17,9 @@ use wcf\system\cache\builder\UserGroupRemovalCacheBuilder;
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package WoltLabSuite\Core\Data\User\Group\Removal
  *
- * @method static UserGroupRemoval create(array $parameters = [])
- * @method      UserGroupRemoval getDecoratedObject()
- * @mixin       UserGroupRemoval
+ * @method static UserGroupRemoval	create(array $parameters = [])
+ * @method	UserGroupRemoval	getDecoratedObject()
+ * @mixin	UserGroupRemoval
  */
 class UserGroupRemovalEditor extends DatabaseObjectEditor implements IEditableCachedObject
 {

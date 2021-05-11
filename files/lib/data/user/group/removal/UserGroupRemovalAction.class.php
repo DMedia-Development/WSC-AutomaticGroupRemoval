@@ -16,9 +16,9 @@ use wcf\system\condition\ConditionHandler;
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package WoltLabSuite\Core\Data\User\Group\Removal
  *
- * @method  UserGroupRemoval     create()
- * @method  UserGroupRemovalEditor[] getObjects()
- * @method  UserGroupRemovalEditor   getSingleObject()
+ * @method  UserGroupRemoval	create()
+ * @method  UserGroupRemovalEditor[]	getObjects()
+ * @method  UserGroupRemovalEditor	getSingleObject()
  */
 class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements IToggleAction
 {
