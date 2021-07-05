@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/package.xsd" name="dev.dmedia.AutomaticGroupRemoval">
+<package name="dev.dmedia.AutomaticGroupRemoval" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/package.xsd">
 	<packageinformation>
-        <packagename><![CDATA[Automatic User Group Removal]]></packagename>
-        <packagedescription><![CDATA[Removes users automatically from groups according to specific criteria.]]></packagedescription>
+		<packagename><![CDATA[Automatic User Group Removal]]></packagename>
+		<packagedescription><![CDATA[Removes users automatically from groups according to specific criteria.]]></packagedescription>
 		<packagename language="de"><![CDATA[Automatische Benutzergruppen Entfernung]]></packagename>
-        <packagedescription language="de"><![CDATA[Entfernt Benutzer nach bestimmten Kriterien automatisch aus Gruppen.]]></packagedescription>	
+		<packagedescription language="de"><![CDATA[Entfernt Benutzer nach bestimmten Kriterien automatisch aus Gruppen.]]></packagedescription>	
 		<version>5.4.0</version>
 		<date>2021-07-05</date>
 	</packageinformation>
