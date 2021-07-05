@@ -9,15 +9,15 @@
 			<conditiongroup>general</conditiongroup>
 		</type>
 		<type>
-			<name>dev.dmedia.AutomaticGroupRemoval.condition.userGroup</name>
-			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
-			<classname>wcf\system\condition\UserGroupCondition</classname>
-			<conditiongroup>general</conditiongroup>
-		</type>
-		<type>
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.email</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
 			<classname>wcf\system\condition\UserEmailCondition</classname>
+			<conditiongroup>general</conditiongroup>
+		</type>
+		<type>
+			<name>dev.dmedia.AutomaticGroupRemoval.condition.userGroup</name>
+			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+			<classname>wcf\system\condition\UserGroupCondition</classname>
 			<conditiongroup>general</conditiongroup>
 		</type>
 		<type>
@@ -93,7 +93,7 @@
 		<type>
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.trophyPoints</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
-			<classname><![CDATA[wcf\system\condition\UserIntegerPropertyCondition]]></classname>
+			<classname>wcf\system\condition\UserIntegerPropertyCondition</classname>
 			<conditiongroup>contents</conditiongroup>
 			<propertyname>trophyPoints</propertyname>
 			<minvalue>0</minvalue>
