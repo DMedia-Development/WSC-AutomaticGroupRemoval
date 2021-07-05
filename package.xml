@@ -5,7 +5,7 @@
         <packagedescription><![CDATA[Removes users automatically from groups according to specific criteria.]]></packagedescription>
 		<packagename language="de"><![CDATA[Automatische Benutzergruppen Entfernung]]></packagename>
         <packagedescription language="de"><![CDATA[Entfernt Benutzer nach bestimmten Kriterien automatisch aus Gruppen.]]></packagedescription>	
-		<version>1.1.0</version>
+		<version>5.4.0</version>
 		<date>2021-05-07</date>
 	</packageinformation>
 	
