@@ -5,21 +5,21 @@
         <packagedescription><![CDATA[Removes users automatically from groups according to specific criteria.]]></packagedescription>
 		<packagename language="de"><![CDATA[Automatische Benutzergruppen Entfernung]]></packagename>
         <packagedescription language="de"><![CDATA[Entfernt Benutzer nach bestimmten Kriterien automatisch aus Gruppen.]]></packagedescription>	
-		<version>1.0.0</version>
-		<date>2020-01-25</date>
+		<version>5.4.0</version>
+		<date>2021-07-05</date>
 	</packageinformation>
 	
 	<authorinformation>
-		<author><![CDATA[DMedia]]></author>
+		<author><![CDATA[DMedia Development]]></author>
 		<authorurl><![CDATA[https://www.woltlab.com/user/1468377]]></authorurl>
 	</authorinformation>
 	
 	<requiredpackages>
-		<requiredpackage minversion="5.2.0">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="5.4.0">com.woltlab.wcf</requiredpackage>
 	</requiredpackages>
 	
 	<excludedpackages>
-		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="5.5.0 Alpha 1">com.woltlab.wcf</excludedpackage>
 	</excludedpackages>
 	
 	<instructions type="install">
@@ -30,6 +30,13 @@
 		<instruction type="language" />
 		<instruction type="file" />
 		<instruction type="sql" />
+		<instruction type="cronjob" />
+	</instructions>
+
+	<instructions type="update" fromversion="1.0.0">
+		<instruction type="acpTemplate" />
+		<instruction type="objectType" />
+		<instruction type="file" />
 		<instruction type="cronjob" />
 	</instructions>
 </package>

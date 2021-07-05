@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/vortex/objectType.xsd">
-	<import>	
+	<import>
+		<!-- user group removal conditions -->
 		<type>
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.username</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
@@ -44,6 +45,18 @@
 			<conditiongroup>general</conditiongroup>
 		</type>
 		<type>
+			<name>dev.dmedia.AutomaticGroupRemoval.condition.signature</name>
+			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+			<classname>wcf\system\condition\UserSignatureCondition</classname>
+			<conditiongroup>general</conditiongroup>
+		</type>
+		<type>
+			<name>dev.dmedia.AutomaticGroupRemoval.condition.coverPhoto</name>
+			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+			<classname>wcf\system\condition\UserCoverPhotoCondition</classname>
+			<conditiongroup>general</conditiongroup>
+		</type>
+		<type>
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.state</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
 			<classname>wcf\system\condition\UserStateCondition</classname>
@@ -80,7 +93,7 @@
 		<type>
 			<name>dev.dmedia.AutomaticGroupRemoval.condition.trophyPoints</name>
 			<definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
-			<classname><![CDATA[wcf\system\condition\UserIntegerPropertyCondition]]></classname>
+			<classname>wcf\system\condition\UserIntegerPropertyCondition</classname>
 			<conditiongroup>contents</conditiongroup>
 			<propertyname>trophyPoints</propertyname>
 			<minvalue>0</minvalue>

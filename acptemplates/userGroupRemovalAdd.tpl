@@ -14,11 +14,7 @@
 	</nav>
 </header>
 
-{include file='formError'}
-
-{if $success|isset}
-	<p class="success">{lang}wcf.global.success.{@$action}{/lang}</p>
-{/if}
+{include file='formNotice'}
 
 <form method="post" action="{if $action == 'add'}{link controller='UserGroupRemovalAdd'}{/link}{else}{link controller='UserGroupRemovalEdit' object=$removal}{/link}{/if}">
 	<div class="section">
@@ -41,7 +37,7 @@
 		<dl{if $errorField == 'groupID'} class="formError"{/if}>
 			<dt><label for="groupID">{lang}wcf.user.group{/lang}</label></dt>
 			<dd>
-				{htmlOptions name='groupID' options=$userGroups selected=$groupID}
+				{htmlOptions name='groupID' id='groupID' options=$userGroups selected=$groupID}
 				{if $errorField == 'groupID'}
 					{if $errorType == 'noValidSelection'}
 						<small class="innerError">{lang}wcf.global.form.error.noValidSelection{/lang}</small>
@@ -80,7 +76,7 @@
 	<div class="formSubmit">
 		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" accesskey="s">
 		<input type="hidden" name="action" value="{@$action}">
-		{@SECURITY_TOKEN_INPUT_TAG}
+		{csrfToken}
 	</div>
 </form>
 
