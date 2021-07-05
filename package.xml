@@ -34,8 +34,8 @@
 	</instructions>
 
 	<instructions type="update" fromversion="1.0.0">
-		<instruction type="objectType" />
 		<instruction type="acpTemplate" />
+		<instruction type="objectType" />
 		<instruction type="file" />
 		<instruction type="cronjob" />
 	</instructions>
