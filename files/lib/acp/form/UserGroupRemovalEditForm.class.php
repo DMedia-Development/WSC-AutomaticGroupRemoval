@@ -29,7 +29,7 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
 	 * edited automatic user group removal
 	 * @var	UserGroupRemoval
 	 */
-	public $removal = null;
+	public $removal;
 
 	/**
 	 * id of the edited automatic user group removal

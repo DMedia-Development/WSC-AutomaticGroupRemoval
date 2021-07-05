@@ -77,19 +77,20 @@ class UserGroupRemovalAddForm extends AbstractForm
 			'groupID' => $this->groupID,
 			'isDisabled' => $this->isDisabled,
 			'title' => $this->title,
-			'userGroups' => $this->userGroups
+			'userGroups' => $this->userGroups,
 		]);
 	}
 	
 	/**
 	 * @inheritDoc
 	 */
-	public function readData() {
+	public function readData()
+	{
 		$this->userGroups = UserGroup::getSortedGroupsByType([], [
 			UserGroup::EVERYONE,
 			UserGroup::GUESTS,
+			UserGroup::OWNER,
 			UserGroup::USERS,
-			UserGroup::OWNER
 		]);
 
 		foreach ($this->userGroups as $key => $userGroup) {
@@ -111,7 +112,8 @@ class UserGroupRemovalAddForm extends AbstractForm
 	/**
 	 * @inheritDoc
 	 */
-	public function readFormParameters() {
+	public function readFormParameters()
+	{
 		parent::readFormParameters();
 		
 		if (isset($_POST['groupID'])) {

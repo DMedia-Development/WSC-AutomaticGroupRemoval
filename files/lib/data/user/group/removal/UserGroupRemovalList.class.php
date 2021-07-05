@@ -13,10 +13,12 @@ use wcf\data\DatabaseObjectList;
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  * @package WoltLabSuite\Core\Data\User\Group\Removal
  *
- * @method  UserGroupRemoval	current()
- * @method  UserGroupRemoval[]	getObjects()
- * @method  UserGroupOption|null	getSingleObject()
- * @method  UserGroupRemoval|null	search($objectID)
- * @property    UserGroupRemoval[]	$objects
+ * @method  UserGroupRemoval     current()
+ * @method  UserGroupRemoval[]       getObjects()
+ * @method  UserGroupRemoval|null    getSingleObject()
+ * @method  UserGroupRemoval|null    search($objectID)
+ * @property    UserGroupRemoval[] $objects
  */
-class UserGroupRemovalList extends DatabaseObjectList { }
+class UserGroupRemovalList extends DatabaseObjectList
+{
+}
