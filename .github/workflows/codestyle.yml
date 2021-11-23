@@ -1,0 +1,27 @@
+# Source: https://github.com/WoltLab/WCF/blob/master/.github/workflows/codestyle.yml
+
+name: Code Style
+
+on:
+  push:
+    branches:
+    - "5.*"
+    - master
+  pull_request:
+
+jobs:
+  php:
+    name: PHP
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: PHPCS
+      uses: chekalsky/phpcs-action@v1.2.0
+    - name: Setup PHP with tools
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extensions: ctype, dom, exif, gd, gmp, hash, intl, json, libxml, mbstring, opcache, pcre, pdo, pdo_mysql, zlib
+        tools: php-cs-fixer
+    - name: php-cs-fixer
+      run: php-cs-fixer fix --dry-run --diff
