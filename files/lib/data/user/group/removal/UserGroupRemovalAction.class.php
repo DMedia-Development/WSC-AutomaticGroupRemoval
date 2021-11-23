@@ -22,33 +22,33 @@ use wcf\system\condition\ConditionHandler;
  */
 class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements IToggleAction
 {
-	use TDatabaseObjectToggle;
+    use TDatabaseObjectToggle;
 
-	/**
-	 * @inheritDoc
-	 */
-	protected $permissionsDelete = ['admin.user.canManageGroupAssignment'];
+    /**
+     * @inheritDoc
+     */
+    protected $permissionsDelete = ['admin.user.canManageGroupAssignment'];
 
-	/**
-	 * @inheritDoc
-	 */
-	protected $permissionsUpdate = ['admin.user.canManageGroupAssignment'];
+    /**
+     * @inheritDoc
+     */
+    protected $permissionsUpdate = ['admin.user.canManageGroupAssignment'];
 
-	/**
-	 * @inheritDoc
-	 */
-	protected $requireACP = ['create', 'delete', 'toggle', 'update'];
+    /**
+     * @inheritDoc
+     */
+    protected $requireACP = ['create', 'delete', 'toggle', 'update'];
 
-	/**
-	 * @inheritDoc
-	 */
-	public function delete()
-	{
-		ConditionHandler::getInstance()->deleteConditions(
-			'dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval',
-			$this->objectIDs
-		);
+    /**
+     * @inheritDoc
+     */
+    public function delete()
+    {
+        ConditionHandler::getInstance()->deleteConditions(
+            'dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval',
+            $this->objectIDs
+        );
 
-		return parent::delete();
-	}
+        return parent::delete();
+    }
 }
