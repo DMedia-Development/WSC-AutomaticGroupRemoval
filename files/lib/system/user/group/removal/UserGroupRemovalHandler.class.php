@@ -74,7 +74,7 @@ class UserGroupRemovalHandler extends SingletonFactory
 
             if (!empty($oldGroupID)) {
                 $userAction = new UserAction([$user], 'removeFromGroups', [
-                    'groups' => $oldGroupID
+                    'groups' => $oldGroupID,
                 ]);
                 $userAction->executeAction();
             }

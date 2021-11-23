@@ -48,7 +48,7 @@ class UserGroupRemovalCronjob extends AbstractCronjob
         foreach ($usersFromGroup as $groupID => $users) {
             if (!empty($users)) {
                 $userAction = new UserAction(\array_unique($users), 'removeFromGroups', [
-                    'groups' => [$groupID]
+                    'groups' => [$groupID],
                 ]);
                 $userAction->executeAction();
             }

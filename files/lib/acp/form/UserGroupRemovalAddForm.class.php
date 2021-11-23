@@ -193,7 +193,7 @@ class UserGroupRemovalAddForm extends AbstractForm
             throw new UserInputException('title');
         }
 
-        if (strlen($this->title) > 255) {
+        if (\strlen($this->title) > 255) {
             throw new UserInputException('title', 'tooLong');
         }
 
