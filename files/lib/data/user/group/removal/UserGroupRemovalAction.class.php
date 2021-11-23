@@ -28,17 +28,17 @@ class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements ITo
 	 * @inheritDoc
 	 */
 	protected $permissionsDelete = ['admin.user.canManageGroupAssignment'];
-	
+
 	/**
 	 * @inheritDoc
 	 */
 	protected $permissionsUpdate = ['admin.user.canManageGroupAssignment'];
-	
+
 	/**
 	 * @inheritDoc
 	 */
 	protected $requireACP = ['create', 'delete', 'toggle', 'update'];
-	
+
 	/**
 	 * @inheritDoc
 	 */
