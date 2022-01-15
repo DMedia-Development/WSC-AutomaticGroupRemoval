@@ -5,8 +5,8 @@
 		<packagedescription><![CDATA[Removes users automatically from groups according to specific criteria.]]></packagedescription>
 		<packagename language="de"><![CDATA[Automatische Benutzergruppen Entfernung]]></packagename>
 		<packagedescription language="de"><![CDATA[Entfernt Benutzer nach bestimmten Kriterien automatisch aus Gruppen.]]></packagedescription>	
-		<version>5.4.0</version>
-		<date>2021-07-05</date>
+		<version>5.4.10</version>
+		<date>2021-11-23</date>
 	</packageinformation>
 	
 	<authorinformation>
@@ -38,5 +38,9 @@
 		<instruction type="objectType" />
 		<instruction type="file" />
 		<instruction type="cronjob" />
+	</instructions>
+    
+	<instructions type="update" fromversion="5.4.0">
+		<instruction type="acpTemplate" />
 	</instructions>
 </package>
