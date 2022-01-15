@@ -22,7 +22,7 @@
 
 {if $objects|count}
 	<div class="section tabularBox" id="UserGroupRemovalTableContainer">
-		<table class="table jsObjectActionContainer" data-object-action-class-name="wcf\data\user\group\removal\\UserGroupRemovalAction">
+		<table class="table jsObjectActionContainer" data-object-action-class-name="wcf\data\user\group\removal\UserGroupRemovalAction">
 			<thead>
 				<tr>
 					<th class="columnID columnRemovalID" colspan="2"><span>{lang}wcf.global.objectID{/lang}</span></th>
