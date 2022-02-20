@@ -3,7 +3,7 @@
 	<import>
 		<cronjob name="dev.dmedia.AutomaticGroupRemoval.userGroupRemoval">
 			<classname>wcf\system\cronjob\UserGroupRemovalCronjob</classname>
-			<description>Removes users automatically from user groups</description>
+			<description>Automatically removes users from user groups</description>
 			<description language="de">Entfernt Benutzer automatisch aus Benutzergruppen</description>
 			<startminute>*/10</startminute>
 			<starthour>*</starthour>
