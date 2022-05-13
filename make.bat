@@ -72,7 +72,7 @@ IF EXIST acptemplates_update (
 )
 
 Rem Create PACKAGE_NAME.tar
-E:\Programme\7-Zip\7z.exe a -ttar -mx=9 %PACKAGE_NAME%_v%PACKAGE_VERSION%.tar .\* -x!acptemplates -x!acptemplates_update -x!files -x!files_update -x!templates -x!templates_update -x!%PACKAGE_NAME%.tar -x!.git -x!.github -x!.gitignore -x!make.bat -x!make.sh -x!.vscode -x!.idea -x!constants.php -x!README.md -x!.phpcs.xml -x!.php-cs-fixer.dist.php
+E:\Programme\7-Zip\7z.exe a -ttar -mx=9 %PACKAGE_NAME%_v%PACKAGE_VERSION%.tar .\* -x!acptemplates -x!acptemplates_update -x!files -x!files_update -x!templates -x!templates_update -x!%PACKAGE_NAME%.tar -x!.git -x!.github -x!.gitignore -x!make.bat -x!make.sh -x!.vscode -x!.idea -x!constants.php -x!README.md -x!.phpcs.xml -x!.php-cs-fixer.dist.php -x!.php-cs-fixer.cache
 
 timeout 1 >nul
 
