@@ -12,9 +12,8 @@ use wcf\system\condition\ConditionHandler;
  *
  * @author Moritz Dahlke (DMedia)
  * @author Original Author: Matthias Schmidt
- * @copyright 2020-2021 DMedia
+ * @copyright 2020-2023 DMedia
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package WoltLabSuite\Core\Data\User\Group\Removal
  *
  * @method  UserGroupRemoval     create()
  * @method  UserGroupRemovalEditor[] getObjects()

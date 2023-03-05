@@ -13,9 +13,8 @@ use wcf\system\request\IRouteController;
  *
  * @author Moritz Dahlke (DMedia)
  * @author Original Author: Matthias Schmidt
- * @copyright 2020-2021 DMedia
+ * @copyright 2020-2023 DMedia
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
- * @package WoltLabSuite\Core\Data\User\Group\Removal
  *
  * @property-read int $removalID unique id of the automatic user group removal
  * @property-read int $groupID id of the user group from which users are automatically removed
