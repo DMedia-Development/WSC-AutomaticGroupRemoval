@@ -39,7 +39,7 @@ class UserGroupRemoval extends DatabaseObject implements IRouteController
     /**
      * @inheritDoc
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->title;
     }
