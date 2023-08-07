@@ -7,7 +7,7 @@
 	
 	<nav class="contentHeaderNavigation">
 		<ul>
-			<li><a href="{link controller='UserGroupRemovalAdd'}{/link}" class="button"><span class="icon icon16 fa-plus"></span> <span>{lang}wcf.acp.group.removal.button.add{/lang}</span></a></li>
+			<li><a href="{link controller='UserGroupRemovalAdd'}{/link}" class="button">{icon name='plus'} <span>{lang}wcf.acp.group.removal.button.add{/lang}</span></a></li>
 			
 			{event name='contentHeaderNavigation'}
 		</ul>
@@ -38,7 +38,7 @@
 					<tr class="jsUserGroupRemovalRow jsObjectActionObject" data-object-id="{@$removal->getObjectID()}">
 						<td class="columnIcon">
 							{objectAction action="toggle" isDisabled=$removal->isDisabled}
-							<a href="{link controller='UserGroupRemovalEdit' object=$removal}{/link}" title="{lang}wcf.global.button.edit{/lang}" class="jsTooltip"><span class="icon icon16 fa-pencil"></span></a>
+							<a href="{link controller='UserGroupRemovalEdit' object=$removal}{/link}" title="{lang}wcf.global.button.edit{/lang}" class="jsTooltip">{icon name='pencil'}</span></a>
 							{objectAction action="delete" objectTitle=$removal->getTitle()}
 							
 							{event name='rowButtons'}
@@ -67,7 +67,7 @@
 		
 		<nav class="contentFooterNavigation">
 			<ul>
-				<li><a href="{link controller='UserGroupRemovalAdd'}{/link}" class="button"><span class="icon icon16 fa-plus"></span> <span>{lang}wcf.acp.group.removal.button.add{/lang}</span></a></li>
+				<li><a href="{link controller='UserGroupRemovalAdd'}{/link}" class="button">{icon name='plus'}</span> <span>{lang}wcf.acp.group.removal.button.add{/lang}</span></a></li>
 				
 				{event name='contentFooterNavigation'}
 			</ul>

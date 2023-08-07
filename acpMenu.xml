@@ -11,7 +11,7 @@
 			<controller>wcf\acp\form\UserGroupRemovalAddForm</controller>
 			<parent>wcf.acp.menu.link.group.removal</parent>
 			<permissions>admin.user.canManageGroupAssignment</permissions>
-			<icon>fa-plus</icon>
+			<icon>plus</icon>
 		</acpmenuitem>
 	</import>
 </data>
