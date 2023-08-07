@@ -32,15 +32,12 @@
 		<instruction type="sql" />
 		<instruction type="cronjob" />
 	</instructions>
-
-	<instructions type="update" fromversion="1.0.0">
-		<instruction type="acpTemplate" />
-		<instruction type="objectType" />
-		<instruction type="file" />
-		<instruction type="cronjob" />
-	</instructions>
     
 	<instructions type="update" fromversion="5.4.*">
 		<instruction type="acpTemplate" />
+		<instruction type="acpMenu" />
+		<instruction type="file" />
+		<instruction type="language" />
+		<instruction type="cronjob" />
 	</instructions>
 </package>
