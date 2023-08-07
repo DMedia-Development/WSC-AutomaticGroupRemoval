@@ -29,6 +29,11 @@ class UserGroupRemovalAddForm extends AbstractForm
     public $activeMenuItem = 'wcf.acp.menu.link.group.removal.add';
 
     /**
+     * @inheritDoc
+     */
+    public $neededPermissions = ['admin.user.canManageGroupAssignment'];
+
+    /**
      * list of grouped user group removal condition object types
      * @var ObjectType[][]
      */
@@ -36,26 +41,18 @@ class UserGroupRemovalAddForm extends AbstractForm
 
     /**
      * id of the selected user group
-     * @var integer
      */
-    public $groupID = 0;
+    public int $groupID = 0;
 
     /**
      * true if the automatic removal is disabled
-     * @var integer
      */
-    public $isDisabled = 0;
-
-    /**
-     * @inheritDoc
-     */
-    public $neededPermissions = ['admin.user.canManageGroupAssignment'];
+    public int $isDisabled = 0;
 
     /**
      * title of the user group removal
-     * @var string
      */
-    public $title = '';
+    public string $title = '';
 
     /**
      * list of selectable user groups

@@ -26,15 +26,13 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
 
     /**
      * edited automatic user group removal
-     * @var UserGroupRemoval
      */
-    public $removal;
+    public UserGroupRemoval $removal;
 
     /**
      * id of the edited automatic user group removal
-     * @var integer
      */
-    public $removalID = 0;
+    public int $removalID = 0;
 
     /**
      * @inheritDoc

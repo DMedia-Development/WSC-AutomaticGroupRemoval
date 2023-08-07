@@ -46,10 +46,8 @@ class UserGroupRemoval extends DatabaseObject implements IRouteController
 
     /**
      * Returns the user group the automatic removal belongs to.
-     *
-     * @return  UserGroup
      */
-    public function getUserGroup()
+    public function getUserGroup(): UserGroup
     {
         return UserGroup::getGroupByID($this->groupID);
     }
