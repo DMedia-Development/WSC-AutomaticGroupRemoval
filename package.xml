@@ -23,13 +23,13 @@
 	</excludedpackages>
 	
 	<instructions type="install">
+		<instruction type="file" />
+		<instruction type="database">acp/database/install_dev.dmedia.AutomaticGroupRemoval.php</instruction>
 		<instruction type="acpTemplate" />
 		<instruction type="acpMenu" />
 		<instruction type="objectTypeDefinition" />
 		<instruction type="objectType" />
 		<instruction type="language" />
-		<instruction type="file" />
-		<instruction type="sql" />
 		<instruction type="cronjob" />
 	</instructions>
     
