@@ -5,6 +5,7 @@
 			<controller>wcf\acp\page\UserGroupRemovalListPage</controller>
 			<parent>wcf.acp.menu.link.group</parent>
 			<permissions>admin.user.canManageGroupAssignment</permissions>
+			<showorder>17</showorder>
 		</acpmenuitem>
 	
 		<acpmenuitem name="wcf.acp.menu.link.group.removal.add">
