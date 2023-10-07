@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/objectType.xsd">
+    <import>
+        <type>
+            <name>dev.dmedia.AutomaticGroupRemoval.filebase.condition.files</name>
+            <definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+            <classname>wcf\system\condition\UserIntegerPropertyCondition</classname>
+            <conditiongroup>contents</conditiongroup>
+            <propertyname>filebaseFiles</propertyname>
+            <minvalue>0</minvalue>
+        </type>
+
+        <type>
+            <name>dev.dmedia.AutomaticGroupRemoval.filebase.condition.reviews</name>
+            <definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
+            <classname>wcf\system\condition\UserIntegerPropertyCondition</classname>
+            <conditiongroup>contents</conditiongroup>
+            <propertyname>filebaseReviews</propertyname>
+            <minvalue>0</minvalue>
+        </type>
+    </import>
+</data>
