@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/package.xsd" name="dev.dmedia.AutomaticGroupRemoval.gallery">
+	<packageinformation>
+		<!-- dev.dmedia.AutomaticGroupRemoval.gallery -->
+		<packagename>Automatic User Group Removal: Gallery</packagename>
+		<packagename language="de">Automatische Benutzergruppen Entfernung: Galerie</packagename>
+		<packagedescription>Extends the main plugin with conditions from the gallery.</packagedescription>
+		<packagedescription language="de">Erweitert das Hauptplugin um Bedingungen aus der Galerie.</packagedescription>
+		<version>6.0.0</version>
+		<date>2023-10-07</date>
+	</packageinformation>
+
+	<authorinformation>
+		<author>DMedia Development</author>
+		<authorurl>https://www.woltlab.com/user/1468377</authorurl>
+	</authorinformation>
+
+	<requiredpackages>
+		<requiredpackage minversion="6.0.0 RC 2">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="6.0.0 RC 1">com.woltlab.gallery</requiredpackage>
+		<requiredpackage minversion="6.0.0">dev.dmedia.AutomaticGroupRemoval</requiredpackage>
+	</requiredpackages>
+
+	<excludedpackages>
+		<excludedpackage version="7.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+	</excludedpackages>
+
+	<instructions type="install">
+		<instruction type="objectType"/>
+	</instructions>
+</package>
