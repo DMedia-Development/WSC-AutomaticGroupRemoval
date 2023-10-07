@@ -1,7 +1,7 @@
 <?php
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__.'/files/')
+    ->in(__DIR__ . 'dev.dmedia.AutomaticGroupRemoval/files/')
     ->notPath('lib/system/api');
 
 return (new PhpCsFixer\Config())
