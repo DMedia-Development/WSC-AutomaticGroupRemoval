@@ -3,7 +3,7 @@
     <import>
         <type>
             <name>dev.dmedia.AutomaticGroupRemoval.calendar.condition.events</name>
-            <definitionname>com.woltlab.wcf.condition.userGroupAssignment</definitionname>
+            <definitionname>dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval</definitionname>
             <classname>wcf\system\condition\UserIntegerPropertyCondition</classname>
             <conditiongroup>contents</conditiongroup>
             <propertyname>calendarEvents</propertyname>
