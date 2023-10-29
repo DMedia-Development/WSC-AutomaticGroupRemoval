@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/package.xsd" name="dev.dmedia.AutomaticGroupRemoval.reputation">
+	<packageinformation>
+		<!-- dev.dmedia.AutomaticGroupRemoval.reputation -->
+		<packagename>Automatic User Group Removal: Reputation System</packagename>
+		<packagename language="de">Automatische Benutzergruppen Entfernung: Reputations-System</packagename>
+		<packagedescription>Extends the main plugin with conditions from the reaction reputation system.</packagedescription>
+		<packagedescription language="de">Erweitert das Hauptplugin um Bedingungen aus dem Reaktionen - Reputations-System.</packagedescription>
+		<version>6.0.0</version>
+		<date>2023-10-29</date>
+	</packageinformation>
+	<authorinformation>
+		<author>DMedia Development</author>
+		<authorurl>https://www.woltlab.com/user/1468377</authorurl>
+	</authorinformation>
+	<requiredpackages>
+		<requiredpackage minversion="6.0.0">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="6.0.0">dev.dmedia.AutomaticGroupRemoval</requiredpackage>
+		<requiredpackage minversion="1.0.0">dev.dmedia.reputation</requiredpackage>
+	</requiredpackages>
+	<excludedpackages>
+		<excludedpackage version="7.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+	</excludedpackages>
+	<instructions type="install">
+		<instruction type="objectType"/>
+	</instructions>
+</package>
