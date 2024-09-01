@@ -13,7 +13,7 @@ use wcf\system\request\IRouteController;
  *
  * @author Moritz Dahlke (DMedia)
  * @author Original Author: Matthias Schmidt
- * @copyright 2020-2023 DMedia
+ * @copyright 2020-2024 DMedia
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  *
  * @property-read int $removalID unique id of the automatic user group removal

@@ -12,7 +12,7 @@ use wcf\system\user\group\removal\UserGroupRemovalHandler;
  *
  * @author Moritz Dahlke (DMedia)
  * @author Original Author: Matthias Schmidt
- * @copyright 2020-2023 DMedia
+ * @copyright 2020-2024 DMedia
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
 class UserGroupRemovalCronjob extends AbstractCronjob
