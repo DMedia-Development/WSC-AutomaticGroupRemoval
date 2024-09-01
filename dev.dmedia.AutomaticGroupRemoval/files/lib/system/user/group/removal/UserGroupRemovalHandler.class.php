@@ -128,7 +128,10 @@ class UserGroupRemovalHandler extends SingletonFactory
      */
     protected function init()
     {
-        $objectTypes = ObjectTypeCache::getInstance()->getObjectTypes('dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval');
+        $objectTypes = ObjectTypeCache::getInstance()->getObjectTypes(
+            'dev.dmedia.AutomaticGroupRemoval.condition.userGroupRemoval'
+        );
+
         foreach ($objectTypes as $objectType) {
             if (!$objectType->conditiongroup) {
                 continue;

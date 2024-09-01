@@ -60,8 +60,8 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
 
             $conditions = $this->removal->getConditions();
             foreach ($conditions as $condition) {
-                /** @noinspection PhpUndefinedMethodInspection */
-                $this->conditions[$condition->getObjectType()->conditiongroup][$condition->objectTypeID]->getProcessor()->setData($condition);
+                $conditionGroupConditions = $this->conditions[$condition->getObjectType()->conditiongroup];
+                $conditionGroupConditions[$condition->objectTypeID]->getProcessor()->setData($condition);
             }
         }
     }

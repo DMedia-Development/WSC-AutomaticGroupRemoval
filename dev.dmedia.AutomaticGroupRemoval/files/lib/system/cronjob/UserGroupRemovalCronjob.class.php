@@ -17,7 +17,7 @@ use wcf\system\user\group\removal\UserGroupRemovalHandler;
  */
 class UserGroupRemovalCronjob extends AbstractCronjob
 {
-    const MAXIMUM_REMOVALS = 1000;
+    protected const MAXIMUM_REMOVALS = 1000;
 
     /**
      * @inheritDoc
