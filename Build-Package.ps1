@@ -2,7 +2,7 @@
 # Date: 2023-08-18
 
 # Specify 7-Zip path
-$SEVENZIP_PATH = "E:\Programme\7-Zip\7z.exe"
+$SEVENZIP_PATH = "7z.exe"
 
 # Check if 7-Zip exists
 if (-not (Test-Path -Path $SEVENZIP_PATH -PathType Leaf)) {
