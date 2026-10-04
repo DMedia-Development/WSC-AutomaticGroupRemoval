@@ -4,9 +4,6 @@ namespace wcf\acp\form;
 
 use wcf\acp\page\UserGroupRemovalListPage;
 use wcf\data\user\group\removal\UserGroupRemoval;
-use wcf\data\user\group\removal\UserGroupRemovalAction;
-use wcf\form\AbstractForm;
-use wcf\system\condition\ConditionHandler;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\interaction\admin\UserGroupRemovalInteractions;
 use wcf\system\interaction\StandaloneInteractionContextMenuComponent;
@@ -29,14 +26,35 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
     public $activeMenuItem = 'wcf.acp.menu.link.group.removal';
 
     /**
+     * @inheritDoc
+     */
+    public $formAction = 'edit';
+
+    /**
      * edited automatic user group removal
      */
     public UserGroupRemoval $removal;
 
     /**
-     * id of the edited automatic user group removal
+     * @inheritDoc
      */
-    public int $removalID = 0;
+    #[\Override]
+    public function readParameters()
+    {
+        parent::readParameters();
+
+        $removalID = 0;
+        if (isset($_REQUEST['id'])) {
+            $removalID = \intval($_REQUEST['id']);
+        }
+
+        $this->formObject = new UserGroupRemoval($removalID);
+        $this->removal = $this->formObject;
+
+        if (!$this->removal->removalID) {
+            throw new IllegalLinkException();
+        }
+    }
 
     /**
      * @inheritDoc
@@ -47,7 +65,6 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
         parent::assignVariables();
 
         WCF::getTPL()->assign([
-            'action' => 'edit',
             'removal' => $this->removal,
             'interactionContextMenu' => StandaloneInteractionContextMenuComponent::forContentHeaderButton(
                 new UserGroupRemovalInteractions(),
@@ -55,78 +72,5 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
                 LinkHandler::getInstance()->getControllerLink(UserGroupRemovalListPage::class)
             ),
         ]);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    #[\Override]
-    public function readData()
-    {
-        parent::readData();
-
-        if (empty($_POST)) {
-            $this->groupID = $this->removal->groupID;
-            $this->isDisabled = $this->removal->isDisabled;
-            $this->title = $this->removal->title;
-
-            $conditions = $this->removal->getConditions();
-            foreach ($conditions as $condition) {
-                $conditionGroupConditions = $this->conditions[$condition->getObjectType()->conditiongroup];
-                $conditionGroupConditions[$condition->objectTypeID]->getProcessor()->setData($condition);
-            }
-        }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    #[\Override]
-    public function readParameters()
-    {
-        parent::readParameters();
-
-        if (isset($_REQUEST['id'])) {
-            $this->removalID = \intval($_REQUEST['id']);
-        }
-
-        $this->removal = new UserGroupRemoval($this->removalID);
-        if (!$this->removal->removalID) {
-            throw new IllegalLinkException();
-        }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    #[\Override]
-    public function save()
-    {
-        AbstractForm::save();
-
-        $this->objectAction = new UserGroupRemovalAction([$this->removal], 'update', [
-            'data' => \array_merge($this->additionalFields, [
-                'groupID' => $this->groupID,
-                'isDisabled' => $this->isDisabled,
-                'title' => $this->title,
-            ]),
-        ]);
-        $this->objectAction->executeAction();
-
-        // transform conditions array into one-dimensional array
-        $conditions = [];
-        foreach ($this->conditions as $groupedObjectTypes) {
-            $conditions = \array_merge($conditions, $groupedObjectTypes);
-        }
-
-        ConditionHandler::getInstance()->updateConditions(
-            $this->removal->removalID,
-            $this->removal->getConditions(),
-            $conditions
-        );
-
-        $this->saved();
-
-        WCF::getTPL()->assign('success', true);
     }
 }

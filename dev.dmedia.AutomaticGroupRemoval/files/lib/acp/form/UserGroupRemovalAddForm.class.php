@@ -2,26 +2,28 @@
 
 namespace wcf\acp\form;
 
-use wcf\data\object\type\ObjectType;
 use wcf\data\user\group\removal\UserGroupRemovalAction;
 use wcf\data\user\group\UserGroup;
-use wcf\form\AbstractForm;
+use wcf\form\AbstractFormBuilderForm;
 use wcf\system\condition\ConditionHandler;
-use wcf\system\exception\UserInputException;
-use wcf\system\request\LinkHandler;
+use wcf\system\form\builder\container\FormContainer;
+use wcf\system\form\builder\field\IsDisabledFormField;
+use wcf\system\form\builder\field\SelectFormField;
+use wcf\system\form\builder\field\TitleFormField;
+use wcf\system\form\builder\field\UserGroupRemovalConditionsFormField;
+use wcf\system\form\builder\field\validation\FormFieldValidationError;
+use wcf\system\form\builder\field\validation\FormFieldValidator;
+use wcf\system\form\builder\field\IFormField;
 use wcf\system\user\group\removal\UserGroupRemovalHandler;
-use wcf\system\WCF;
-use wcf\util\StringUtil;
 
 /**
  * Shows the form to create a new automatic user group removal.
  *
  * @author Moritz Dahlke (DMedia)
- * @author Original Author: Matthias Schmidt
  * @copyright 2020-2026 DMedia
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
-class UserGroupRemovalAddForm extends AbstractForm
+class UserGroupRemovalAddForm extends AbstractFormBuilderForm
 {
     /**
      * @inheritDoc
@@ -34,105 +36,51 @@ class UserGroupRemovalAddForm extends AbstractForm
     public $neededPermissions = ['admin.user.canManageGroupAssignment'];
 
     /**
-     * list of grouped user group removal condition object types
-     * @var ObjectType[][]
+     * @inheritDoc
      */
-    public array $conditions = [];
-
-    /**
-     * id of the selected user group
-     */
-    public int $groupID = 0;
-
-    /**
-     * true if the automatic removal is disabled
-     */
-    public int $isDisabled = 0;
-
-    /**
-     * title of the user group removal
-     */
-    public string $title = '';
-
-    /**
-     * list of selectable user groups
-     * @var UserGroup[]
-     */
-    public array $userGroups = [];
+    public $objectActionClass = UserGroupRemovalAction::class;
 
     /**
      * @inheritDoc
      */
-    #[\Override]
-    public function assignVariables()
-    {
-        parent::assignVariables();
+    public $objectEditLinkController = UserGroupRemovalEditForm::class;
 
-        WCF::getTPL()->assign([
-            'action' => 'add',
-            'groupedObjectTypes' => $this->conditions,
-            'groupID' => $this->groupID,
-            'isDisabled' => $this->isDisabled,
-            'title' => $this->title,
-            'userGroups' => $this->userGroups,
+    /**
+     * @inheritDoc
+     */
+    protected function createForm()
+    {
+        parent::createForm();
+
+        $this->form->appendChildren([
+            FormContainer::create('data')
+                ->appendChildren([
+                    TitleFormField::create()
+                        ->label('wcf.global.name')
+                        ->required()
+                        ->autoFocus()
+                        ->addValidator(new FormFieldValidator(
+                            'titleLength',
+                            static function (IFormField $field): void {
+                                if (\mb_strlen((string)$field->getValue()) > 255) {
+                                    $field->addValidationError(new FormFieldValidationError(
+                                        'tooLong',
+                                        'wcf.acp.group.removal.title.error.tooLong'
+                                    ));
+                                }
+                            }
+                        )),
+                    SelectFormField::create('groupID')
+                        ->label('wcf.user.group')
+                        ->required()
+                        ->ignoreInvalidValues()
+                        ->options($this->getUserGroupOptions()),
+                    IsDisabledFormField::create()
+                        ->label('wcf.acp.group.removal.isDisabled'),
+                ]),
+            UserGroupRemovalConditionsFormField::create('conditions')
+                ->groupedObjectTypes(UserGroupRemovalHandler::getInstance()->getGroupedObjectTypes()),
         ]);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    #[\Override]
-    public function readData()
-    {
-        $this->userGroups = UserGroup::getSortedGroupsByType([], [
-            UserGroup::EVERYONE,
-            UserGroup::GUESTS,
-            UserGroup::OWNER,
-            UserGroup::USERS,
-        ]);
-
-        foreach ($this->userGroups as $key => $userGroup) {
-            if (!$userGroup->isAccessible()) {
-                unset($this->userGroups[$key]);
-            }
-
-            // also exlude groups with ACP access
-            if ($userGroup->getGroupOption('admin.general.canUseAcp')) {
-                unset($this->userGroups[$key]);
-            }
-        }
-
-        $this->conditions = UserGroupRemovalHandler::getInstance()->getGroupedObjectTypes();
-
-        parent::readData();
-    }
-
-    /**
-     * @inheritDoc
-     */
-    #[\Override]
-    public function readFormParameters()
-    {
-        parent::readFormParameters();
-
-        if (isset($_POST['groupID'])) {
-            $this->groupID = \intval($_POST['groupID']);
-        }
-
-        if (isset($_POST['isDisabled'])) {
-            $this->isDisabled = 1;
-        }
-
-        if (isset($_POST['title'])) {
-            $this->title = StringUtil::trim($_POST['title']);
-        }
-
-        foreach ($this->conditions as $conditions) {
-            /** @var ObjectType $condition */
-            foreach ($conditions as $condition) {
-                $condition->getProcessor()->readFormParameters();
-            }
-        }
     }
 
     /**
@@ -141,80 +89,58 @@ class UserGroupRemovalAddForm extends AbstractForm
     #[\Override]
     public function save()
     {
+        // grab the condition object types before the form is rebuilt on creation
+        $conditionsField = $this->form->getNodeById('conditions');
+        \assert($conditionsField instanceof UserGroupRemovalConditionsFormField);
+        $conditionObjectTypes = $conditionsField->getConditionObjectTypes();
+
         parent::save();
 
-        $this->objectAction = new UserGroupRemovalAction([], 'create', [
-            'data' => \array_merge($this->additionalFields, [
-                'groupID' => $this->groupID,
-                'isDisabled' => $this->isDisabled,
-                'title' => $this->title,
-            ]),
-        ]);
-        $returnValues = $this->objectAction->executeAction();
+        $removal = $this->formObject ?? $this->objectAction->getReturnValues()['returnValues'];
 
-        // transform conditions array into one-dimensional array
-        $conditions = [];
-        foreach ($this->conditions as $groupedObjectTypes) {
-            $conditions = \array_merge($conditions, $groupedObjectTypes);
+        if ($this->formAction === 'edit') {
+            ConditionHandler::getInstance()->updateConditions(
+                $removal->removalID,
+                $removal->getConditions(),
+                $conditionObjectTypes
+            );
+        } else {
+            ConditionHandler::getInstance()->createConditions($removal->removalID, $conditionObjectTypes);
+
+            $rebuiltConditionsField = $this->form->getNodeById('conditions');
+            \assert($rebuiltConditionsField instanceof UserGroupRemovalConditionsFormField);
+            $rebuiltConditionsField->reset();
         }
-
-        ConditionHandler::getInstance()->createConditions($returnValues['returnValues']->removalID, $conditions);
-
-        $this->saved();
-
-        // reset values
-        $this->groupID = 0;
-        $this->isDisabled = 0;
-        $this->title = '';
-
-        foreach ($this->conditions as $conditions) {
-            foreach ($conditions as $condition) {
-                $condition->getProcessor()->reset();
-            }
-        }
-
-        WCF::getTPL()->assign([
-            'success' => true,
-            'objectEditLink' => LinkHandler::getInstance()->getControllerLink(
-                UserGroupRemovalEditForm::class,
-                ['id' => $returnValues['returnValues']->removalID]
-            ),
-        ]);
     }
 
     /**
-     * @inheritDoc
+     * Returns the selectable user groups.
+     *
+     * @return array<int, string>
      */
-    #[\Override]
-    public function validate()
+    protected function getUserGroupOptions(): array
     {
-        parent::validate();
+        $userGroups = UserGroup::getSortedGroupsByType([], [
+            UserGroup::EVERYONE,
+            UserGroup::GUESTS,
+            UserGroup::OWNER,
+            UserGroup::USERS,
+        ]);
 
-        if (empty($this->title)) {
-            throw new UserInputException('title');
-        }
-
-        if (\strlen($this->title) > 255) {
-            throw new UserInputException('title', 'tooLong');
-        }
-
-        if (!isset($this->userGroups[$this->groupID])) {
-            throw new UserInputException('groupID', 'noValidSelection');
-        }
-
-        $hasData = false;
-        foreach ($this->conditions as $conditions) {
-            foreach ($conditions as $condition) {
-                $condition->getProcessor()->validate();
-
-                if (!$hasData && $condition->getProcessor()->getData() !== null) {
-                    $hasData = true;
-                }
+        $options = [];
+        foreach ($userGroups as $userGroup) {
+            if (!$userGroup->isAccessible()) {
+                continue;
             }
+
+            // also exclude groups with ACP access
+            if ($userGroup->getGroupOption('admin.general.canUseAcp')) {
+                continue;
+            }
+
+            $options[$userGroup->groupID] = $userGroup->getTitle();
         }
 
-        if (!$hasData) {
-            throw new UserInputException('conditions');
-        }
+        return $options;
     }
 }
