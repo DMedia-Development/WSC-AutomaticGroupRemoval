@@ -5,8 +5,8 @@
 $SEVENZIP_PATH = "7z.exe"
 
 # Check if 7-Zip exists
-if (-not (Test-Path -Path $SEVENZIP_PATH -PathType Leaf)) {
-    Write-Host "7-Zip not found. Aborting..." -ForegroundColor DarkRed -BackgroundColor Red
+if (-not (Get-Command -Name "7z.exe" -ErrorAction SilentlyContinue)) {
+    Write-Host "7-Zip not found in PATH. Aborting..." -ForegroundColor DarkRed -BackgroundColor Red
     PAUSE
     exit
 }
