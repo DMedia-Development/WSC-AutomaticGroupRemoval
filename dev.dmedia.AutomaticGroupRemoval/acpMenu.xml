@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/6.0/packageInstallationPlugin.xsd">
-	<import>
-		<acpmenuitem name="wcf.acp.menu.link.group.removal">
-			<controller>wcf\acp\page\UserGroupRemovalListPage</controller>
-			<parent>wcf.acp.menu.link.group</parent>
-			<permissions>admin.user.canManageGroupAssignment</permissions>
-			<showorder>17</showorder>
-		</acpmenuitem>
-	
-		<acpmenuitem name="wcf.acp.menu.link.group.removal.add">
-			<controller>wcf\acp\form\UserGroupRemovalAddForm</controller>
-			<parent>wcf.acp.menu.link.group.removal</parent>
-			<permissions>admin.user.canManageGroupAssignment</permissions>
-			<icon>plus</icon>
-		</acpmenuitem>
-	</import>
+	<delete>
+		<acpmenuitem name="wcf.acp.menu.link.group.removal" />
+		<acpmenuitem name="wcf.acp.menu.link.group.removal.add" />
+	</delete>
 </data>
