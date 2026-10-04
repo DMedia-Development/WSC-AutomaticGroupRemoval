@@ -35,5 +35,6 @@
 	<instructions type="update" fromversion="6.0.*">
 		<instruction type="file" />
 		<instruction type="acpMenu" />
+		<instruction type="language" />
 	</instructions>
 </package>

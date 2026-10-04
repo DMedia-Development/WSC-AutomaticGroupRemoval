@@ -7,6 +7,12 @@
 
 	<nav class="contentHeaderNavigation">
 		<ul>
+			{if $action == 'edit'}
+				<li>
+					{unsafe:$interactionContextMenu->render()}
+				</li>
+			{/if}
+
 			<li><a href="{link controller='UserGroupRemovalList'}{/link}" class="button">{icon name='list'} <span>{lang}wcf.acp.group.removal.button.list{/lang}</span></a></li>
 
 			{event name='contentHeaderNavigation'}
@@ -14,7 +20,7 @@
 	</nav>
 </header>
 
-{include file='formNotice'}
+{include file='shared_formNotice'}
 
 <form method="post" action="{if $action == 'add'}{link controller='UserGroupRemovalAdd'}{/link}{else}{link controller='UserGroupRemovalEdit' object=$removal}{/link}{/if}">
 	<div class="section">
@@ -27,7 +33,7 @@
 						{if $errorType == 'empty'}
 							{lang}wcf.global.form.error.empty{/lang}
 						{else}
-							{lang}wcf.acp.group.removal.title.error.{@$errorType}{/lang}
+							{lang}wcf.acp.group.removal.title.error.{$errorType}{/lang}
 						{/if}
 					</small>
 				{/if}
@@ -42,7 +48,7 @@
 					{if $errorType == 'noValidSelection'}
 						<small class="innerError">{lang}wcf.global.form.error.noValidSelection{/lang}</small>
 					{else}
-						<small class="innerError">{lang}wcf.acp.group.removal.groupID.error.{@$errorType}{/lang}</small>
+						<small class="innerError">{lang}wcf.acp.group.removal.groupID.error.{$errorType}{/lang}</small>
 					{/if}
 				{/if}
 			</dd>
@@ -67,15 +73,15 @@
 		</header>
 
 		{if $errorField == 'conditions'}
-			<p class="error">{lang}wcf.acp.group.removal.error.noConditions{/lang}</p>
+			<woltlab-core-notice type="error">{lang}wcf.acp.group.removal.error.noConditions{/lang}</woltlab-core-notice>
 		{/if}
-		{include file='userConditions'}
 
+		{include file='shared_userConditions'}
 	</section>
 
 	<div class="formSubmit">
 		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" accesskey="s">
-		<input type="hidden" name="action" value="{@$action}">
+		<input type="hidden" name="action" value="{$action}">
 		{csrfToken}
 	</div>
 </form>

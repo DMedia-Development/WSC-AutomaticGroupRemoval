@@ -30,6 +30,7 @@ class UserGroupRemovalEditor extends DatabaseObjectEditor implements IEditableCa
     /**
      * @inheritDoc
      */
+    #[\Override]
     public static function resetCache()
     {
         UserGroupRemovalCacheBuilder::getInstance()->reset();

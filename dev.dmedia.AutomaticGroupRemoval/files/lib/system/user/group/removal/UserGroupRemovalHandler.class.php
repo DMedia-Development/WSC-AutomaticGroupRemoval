@@ -126,6 +126,7 @@ class UserGroupRemovalHandler extends SingletonFactory
     /**
      * @inheritDoc
      */
+    #[\Override]
     protected function init()
     {
         $objectTypes = ObjectTypeCache::getInstance()->getObjectTypes(

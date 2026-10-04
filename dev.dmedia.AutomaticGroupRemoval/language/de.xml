@@ -6,7 +6,6 @@
 			<item name="wcf.acp.menu.link.group.removal.add"><![CDATA[Automatische Entfernung hinzufügen]]></item>
 		</category>
 
-		<item name="wcf.acp.group.removal.delete.confirmMessage"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} die automatische Benutzergruppen-Entfernung <span class="confirmationObject">{$removal->title}</span> wirklich löschen?]]></item>
 		<category name="wcf.acp.group">
 			<item name="wcf.acp.group.removal.add"><![CDATA[Automatische Benutzergruppen-Entfernung hinzufügen]]></item>
 			<item name="wcf.acp.group.removal.button.add"><![CDATA[Automatische Entfernung hinzufügen]]></item>
@@ -21,4 +20,8 @@
 			<item name="wcf.acp.group.removal.userGroup"><![CDATA[Benutzergruppe]]></item>
 		</category>
 	</import>
+
+	<delete>
+		<item name="wcf.acp.group.removal.delete.confirmMessage" />
+	</delete>
 </language>

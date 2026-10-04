@@ -2,8 +2,8 @@
 
 namespace wcf\acp\page;
 
-use wcf\data\user\group\removal\UserGroupRemovalList;
-use wcf\page\MultipleLinkPage;
+use wcf\page\AbstractGridViewPage;
+use wcf\system\gridView\admin\UserGroupRemovalGridView;
 
 /**
  * Lists the available automatic user group removals.
@@ -13,9 +13,9 @@ use wcf\page\MultipleLinkPage;
  * @copyright 2020-2026 DMedia
  * @license GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  *
- * @property    UserGroupRemovalList $objectList
+ * @extends AbstractGridViewPage<UserGroupRemovalGridView>
  */
-class UserGroupRemovalListPage extends MultipleLinkPage
+final class UserGroupRemovalListPage extends AbstractGridViewPage
 {
     /**
      * @inheritDoc
@@ -30,5 +30,9 @@ class UserGroupRemovalListPage extends MultipleLinkPage
     /**
      * @inheritDoc
      */
-    public $objectListClassName = UserGroupRemovalList::class;
+    #[\Override]
+    protected function createGridView(): UserGroupRemovalGridView
+    {
+        return new UserGroupRemovalGridView();
+    }
 }

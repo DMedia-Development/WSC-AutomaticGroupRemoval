@@ -37,7 +37,7 @@ class UserGroupRemovalAddForm extends AbstractForm
      * list of grouped user group removal condition object types
      * @var ObjectType[][]
      */
-    public $conditions = [];
+    public array $conditions = [];
 
     /**
      * id of the selected user group
@@ -58,11 +58,12 @@ class UserGroupRemovalAddForm extends AbstractForm
      * list of selectable user groups
      * @var UserGroup[]
      */
-    public $userGroups = [];
+    public array $userGroups = [];
 
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function assignVariables()
     {
         parent::assignVariables();
@@ -80,6 +81,7 @@ class UserGroupRemovalAddForm extends AbstractForm
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function readData()
     {
         $this->userGroups = UserGroup::getSortedGroupsByType([], [
@@ -108,6 +110,7 @@ class UserGroupRemovalAddForm extends AbstractForm
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function readFormParameters()
     {
         parent::readFormParameters();
@@ -135,6 +138,7 @@ class UserGroupRemovalAddForm extends AbstractForm
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function save()
     {
         parent::save();
@@ -181,6 +185,7 @@ class UserGroupRemovalAddForm extends AbstractForm
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function validate()
     {
         parent::validate();

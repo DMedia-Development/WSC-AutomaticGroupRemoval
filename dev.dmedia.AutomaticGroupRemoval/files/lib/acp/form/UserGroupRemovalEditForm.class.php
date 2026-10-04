@@ -2,11 +2,15 @@
 
 namespace wcf\acp\form;
 
+use wcf\acp\page\UserGroupRemovalListPage;
 use wcf\data\user\group\removal\UserGroupRemoval;
 use wcf\data\user\group\removal\UserGroupRemovalAction;
 use wcf\form\AbstractForm;
 use wcf\system\condition\ConditionHandler;
 use wcf\system\exception\IllegalLinkException;
+use wcf\system\interaction\admin\UserGroupRemovalInteractions;
+use wcf\system\interaction\StandaloneInteractionContextMenuComponent;
+use wcf\system\request\LinkHandler;
 use wcf\system\WCF;
 
 /**
@@ -37,6 +41,7 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function assignVariables()
     {
         parent::assignVariables();
@@ -44,18 +49,25 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
         WCF::getTPL()->assign([
             'action' => 'edit',
             'removal' => $this->removal,
+            'interactionContextMenu' => StandaloneInteractionContextMenuComponent::forContentHeaderButton(
+                new UserGroupRemovalInteractions(),
+                $this->removal,
+                LinkHandler::getInstance()->getControllerLink(UserGroupRemovalListPage::class)
+            ),
         ]);
     }
 
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function readData()
     {
         parent::readData();
 
         if (empty($_POST)) {
             $this->groupID = $this->removal->groupID;
+            $this->isDisabled = $this->removal->isDisabled;
             $this->title = $this->removal->title;
 
             $conditions = $this->removal->getConditions();
@@ -69,6 +81,7 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function readParameters()
     {
         parent::readParameters();
@@ -86,6 +99,7 @@ class UserGroupRemovalEditForm extends UserGroupRemovalAddForm
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function save()
     {
         AbstractForm::save();

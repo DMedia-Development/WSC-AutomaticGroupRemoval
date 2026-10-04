@@ -3,6 +3,10 @@
 use wcf\acp\form\UserGroupRemovalAddForm;
 use wcf\acp\page\UserGroupRemovalListPage;
 use wcf\event\acp\menu\item\ItemCollecting;
+use wcf\event\endpoint\ControllerCollecting;
+use wcf\system\endpoint\controller\core\users\groups\removals\DeleteUserGroupRemoval;
+use wcf\system\endpoint\controller\core\users\groups\removals\DisableUserGroupRemoval;
+use wcf\system\endpoint\controller\core\users\groups\removals\EnableUserGroupRemoval;
 use wcf\system\event\EventHandler;
 use wcf\system\menu\acp\AcpMenuItem;
 use wcf\system\request\LinkHandler;
@@ -11,6 +15,15 @@ use wcf\system\WCF;
 
 return static function (): void {
     $eventHandler = EventHandler::getInstance();
+
+    $eventHandler->register(
+        ControllerCollecting::class,
+        static function (ControllerCollecting $event): void {
+            $event->register(new DeleteUserGroupRemoval());
+            $event->register(new EnableUserGroupRemoval());
+            $event->register(new DisableUserGroupRemoval());
+        }
+    );
 
     $eventHandler->register(
         ItemCollecting::class,

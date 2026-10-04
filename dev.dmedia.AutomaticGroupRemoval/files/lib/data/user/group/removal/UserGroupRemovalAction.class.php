@@ -41,6 +41,7 @@ class UserGroupRemovalAction extends AbstractDatabaseObjectAction implements ITo
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function delete()
     {
         ConditionHandler::getInstance()->deleteConditions(

@@ -22,6 +22,7 @@ class UserGroupRemovalCronjob extends AbstractCronjob
     /**
      * @inheritDoc
      */
+    #[\Override]
     public function execute(Cronjob $cronjob)
     {
         parent::execute($cronjob);

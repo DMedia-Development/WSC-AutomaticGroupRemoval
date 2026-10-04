@@ -17,6 +17,7 @@ class UserGroupRemovalCacheBuilder extends AbstractCacheBuilder
     /**
      * @inheritDoc
      */
+    #[\Override]
     protected function rebuild(array $parameters)
     {
         $removalList = new UserGroupRemovalList();
