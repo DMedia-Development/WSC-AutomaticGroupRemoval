@@ -4,11 +4,11 @@
 	<div class="contentHeaderTitle">
 		<h1 class="contentTitle">{lang}wcf.acp.group.removal.{$action}{/lang}</h1>
 	</div>
-	
+
 	<nav class="contentHeaderNavigation">
 		<ul>
 			<li><a href="{link controller='UserGroupRemovalList'}{/link}" class="button">{icon name='list'} <span>{lang}wcf.acp.group.removal.button.list{/lang}</span></a></li>
-			
+
 			{event name='contentHeaderNavigation'}
 		</ul>
 	</nav>
@@ -33,7 +33,7 @@
 				{/if}
 			</dd>
 		</dl>
-		
+
 		<dl{if $errorField == 'groupID'} class="formError"{/if}>
 			<dt><label for="groupID">{lang}wcf.user.group{/lang}</label></dt>
 			<dd>
@@ -47,32 +47,32 @@
 				{/if}
 			</dd>
 		</dl>
-		
+
 		<dl>
 			<dt></dt>
 			<dd>
 				<label><input type="checkbox" id="isDisabled" name="isDisabled"{if $isDisabled} checked{/if}> {lang}wcf.acp.group.removal.isDisabled{/lang}</label>
 			</dd>
 		</dl>
-		
+
 		{event name='dataFields'}
 	</div>
-	
+
 	{event name='sections'}
-	
+
 	<section class="section">
 		<header class="sectionHeader">
 			<h2 class="sectionTitle">{lang}wcf.acp.group.removal.conditions{/lang}</h2>
 			<p class="sectionDescription">{lang}wcf.acp.group.removal.conditions.description{/lang}</p>
 		</header>
-		
+
 		{if $errorField == 'conditions'}
 			<p class="error">{lang}wcf.acp.group.removal.error.noConditions{/lang}</p>
 		{/if}
-		
 		{include file='userConditions'}
+
 	</section>
-	
+
 	<div class="formSubmit">
 		<input type="submit" value="{lang}wcf.global.button.submit{/lang}" accesskey="s">
 		<input type="hidden" name="action" value="{@$action}">
