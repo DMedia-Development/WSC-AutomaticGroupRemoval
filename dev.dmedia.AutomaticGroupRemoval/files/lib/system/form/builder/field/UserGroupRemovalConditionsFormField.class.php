@@ -44,7 +44,7 @@ final class UserGroupRemovalConditionsFormField extends AbstractFormField
 
                 if (!$field->hasConditionData()) {
                     $field->addValidationError(new FormFieldValidationError(
-                        'empty',
+                        'noConditions',
                         'wcf.acp.group.removal.error.noConditions'
                     ));
 
@@ -177,6 +177,20 @@ final class UserGroupRemovalConditionsFormField extends AbstractFormField
         }
 
         return $conditionObjectTypes;
+    }
+
+    /**
+     * Returns an error message if no condition has been filled out.
+     */
+    public function getNoConditionsErrorMessage(): ?string
+    {
+        foreach ($this->getValidationErrors() as $validationError) {
+            if ($validationError->getType() === 'noConditions') {
+                return $validationError->getMessage();
+            }
+        }
+
+        return null;
     }
 
     /**

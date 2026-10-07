@@ -7,5 +7,10 @@
 		{/if}
 	</header>
 
+	{assign var='noConditionsError' value=$field->getNoConditionsErrorMessage()}
+	{if $noConditionsError !== null}
+		<woltlab-core-notice type="error">{unsafe:$noConditionsError}</woltlab-core-notice>
+	{/if}
+
 	{include file='shared_userConditions' groupedObjectTypes=$field->getGroupedObjectTypes()}
 </section>
