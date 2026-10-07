@@ -8,6 +8,7 @@ use wcf\data\user\group\removal\UserGroupRemoval;
 use wcf\system\form\builder\field\validation\FormFieldValidationError;
 use wcf\system\form\builder\field\validation\FormFieldValidator;
 use wcf\system\form\builder\field\IFormField;
+use wcf\system\exception\UserInputException;
 use wcf\system\WCF;
 
 /**
@@ -46,6 +47,22 @@ final class UserGroupRemovalConditionsFormField extends AbstractFormField
                         'empty',
                         'wcf.acp.group.removal.error.noConditions'
                     ));
+
+                    return;
+                }
+
+                foreach ($field->groupedObjectTypes as $groupedObjectTypes) {
+                    foreach ($groupedObjectTypes as $conditionObjectType) {
+                        try {
+                            $conditionObjectType->getProcessor()->validate();
+                        } catch (UserInputException $e) {
+                            $field->addValidationError(new FormFieldValidationError(
+                                $e->getType(),
+                                null,
+                                $e->getVariables()
+                            ));
+                        }
+                    }
                 }
             }
         ));
